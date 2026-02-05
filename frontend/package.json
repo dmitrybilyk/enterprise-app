@@ -1,0 +1,10 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo Building frontend",
+    "test": "echo Running frontend tests",
+    "start": "npx serve src"
+  }
+}
