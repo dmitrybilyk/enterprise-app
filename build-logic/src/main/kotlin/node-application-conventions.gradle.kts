@@ -7,14 +7,14 @@ node {
     download.set(false)
 
     // Versions are still declared for reproducibility
-    version.set("18.0.0")
+    version.set("20.20.0")
     yarnVersion.set("1.22.19")
 }
 
 tasks.register<com.github.gradle.node.yarn.task.YarnTask>("yarnInstall") {
     group = "build"
     description = "Install frontend dependencies"
-    args.set(listOf("install"))
+    args.set(listOf("install", "--registry", "http://localhost:4873"))
     inputs.file("package.json")
     outputs.dir("node_modules")
 }
