@@ -5,4 +5,5 @@ pluginManagement {
 rootProject.name = "enterprise-app"
 
 include("backend")
+include("common")
 include("frontend")
