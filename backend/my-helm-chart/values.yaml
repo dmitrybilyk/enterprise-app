@@ -4,6 +4,8 @@ image:
   tag: "v1"
 
 service:
-  type: NodePort
+#  type: NodePort
+  type: ClusterIP
   port: 80          # Port for the outside world
   targetPort: 8085   # Your Spring Boot port
+#  nodePort: 30005

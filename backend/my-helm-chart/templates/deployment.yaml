@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-helm-chart.fullname" . }}
+  name: my-app
 spec:
   replicas: {{ .Values.replicaCount | default 1 }}
   selector:
     matchLabels:
-      app: {{ include "my-helm-chart.fullname" . }}
+      app: my-app
   template:
     metadata:
       labels:
-        app: {{ include "my-helm-chart.fullname" . }}
+        app: my-app
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: my-app-container
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.service.targetPort }} # Maps to 8085
+            - containerPort: {{ .Values.service.targetPort }}
