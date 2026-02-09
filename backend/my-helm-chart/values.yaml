@@ -1,0 +1,9 @@
+image:
+  repository: my-app
+  pullPolicy: Never
+  tag: "v1"
+
+service:
+  type: NodePort
+  port: 80          # Port for the outside world
+  targetPort: 8085   # Your Spring Boot port
