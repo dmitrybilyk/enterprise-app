@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: main-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: my-app.local
+      http:
+        paths:
+          - path: /test  # Specifically send /test to the Backend
+            pathType: Exact
+            backend:
+              service:
+                name: my-app-service
+                port:
+                  number: 80
+          - path: /      # Send everything else (the React app) to Frontend
+            pathType: Prefix
+            backend:
+              service:
+                name: my-frontend-service
+                port:
+                  number: 80
