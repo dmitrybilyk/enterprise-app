@@ -15,6 +15,13 @@ spec:
       containers:
         - name: my-app-container
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          volumeMounts:
+            - mountPath: "/app/logs"  # Where your app writes files
+              name: storage-volume
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: my-app-pvc
